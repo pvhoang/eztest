@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 
+// Set to run on EC2;
 const apiUrl = 'http://localhost:8000/api';
 
 @Component({
