@@ -3,8 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 
-// const apiUrl = 'http://localhost:8000/api';
-const apiUrl = 'http://172.17.0.1:8000/api';
+const apiUrl = 'http://localhost:8000/api';
 
 @Component({
   selector: 'app-home',
@@ -39,12 +38,12 @@ export class HomePage {
   }
 
   insert() {
-    let dat = { 'name': "hoang", 'email': "pchoang940@gmail.com", 'password' : "12345" };
+    let dat = { 'name': "hoang", 'email': "pvhoang940@gmail.com", 'password' : "12345" };
     this.post('insert', dat);
   }
 
   update() {
-    let dat = { 'name': "hoang", 'email': "pchoang940@gmail.com", 'password' : "12345" };
+    let dat = { 'name': "hoang", 'email': "pvhoang940@gmail.com", 'password' : "12345" };
     this.put('update/1', dat);
   }
 

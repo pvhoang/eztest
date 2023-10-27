@@ -37,7 +37,15 @@ docker-compose up -d --build frontend
 docker-compose down
 
 
+# GitHub
 
+// https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-push-an-existing-project-to-GitHub
 
+git init
+git add .
+git commit -m "Add existing project files to Git"
+git remote add origin https://github.com/pvhoang/eztest.git
+git push -u -f origin master
 
-
+# -- Update
+git push -u -f origin master
