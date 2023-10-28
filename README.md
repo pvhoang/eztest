@@ -1,5 +1,7 @@
 # Docker
 
+# D:\dev\aws\eztest>
+
 //  -> clean up docker
 docker ps
 docker container prune <- for stopped containers
@@ -48,4 +50,8 @@ git remote add origin https://github.com/pvhoang/eztest.git
 git push -u -f origin master
 
 # -- Update
-git push -u -f origin master
+. Open 'GitHub Desktop' -> Add 'Summary', 'Description' -> Menu 'Repository' -> 'Push' (Ctrl-P)
+
+# -- Build and DockerHub
+
+build.bat
