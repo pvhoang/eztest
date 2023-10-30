@@ -1,57 +1,48 @@
-# Docker
+# --- DEPLOY TO HOST - see EZLEAGUE README ---
 
-# D:\dev\aws\eztest>
+# --- DEPLOY TO AWS EC2 - see EZLEAGUE README ---
 
-//  -> clean up docker
+# 1 - Prepare DockerHub
+run upload all
+<!-- run upload backend
+run upload frontend
+run upload nginx -->
+// validate upload in https://hub.docker.com/ hoang12345/phan12345
+
+# 3 - Work with EC2
+icacls.exe ezec2-2.pem /reset
+icacls.exe ezec2-2.pem /grant:r "hoang:(r)"
+icacls.exe ezec2-2.pem /inheritance:r
+ssh -i "ezec2-2.pem" ec2-user@ec2-54-206-63-91.ap-southeast-2.compute.amazonaws.com
+[ec2-user@ip-172-31-3-81 ~]$
 docker ps
-docker container prune <- for stopped containers
-docker images
-docker image prune -a <- rmi [image] [image]
 
-// Steps
-# 1
-<!-- docker-compose up -d --build mysql backend nginx frontend phpmyadmin composer artisan npm -->
-docker-compose up -d --build mysql backend nginx frontend
-
-# 2
-<!-- docker exec eztest-php-1 php artisan migrate --seed -->
-GET localhost:8000/api/migrate
-GET localhost:8000/api/seed
-localhost:4200 -> 'Migrate', 'Seed'
-
-# 3
-docker logs eztest-nginx-1 
-docker logs eztest-frontend-1
-docker logs eztest-backend-1
-docker logs eztest-mysql-1
-
-chrome://settings/privacy
-frontend: `localhost:4200`
-backend: `localhost:8000`
-phpmyadmin: `localhost:7000`
-
-# 4
-frontend.src.app.home.home.page.ts -> 'Old ATM' -> 'New ATM'
-docker-compose down frontend
-docker-compose up -d --build frontend
-
-# 5
-docker-compose down
-
-
-# GitHub
-
-// https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-push-an-existing-project-to-GitHub
-
-git init
-git add .
-git commit -m "Add existing project files to Git"
-git remote add origin https://github.com/pvhoang/eztest.git
-git push -u -f origin master
-
-# -- Update
+# 1 - Update GitHub
 . Open 'GitHub Desktop' -> Add 'Summary', 'Description' -> Menu 'Repository' -> 'Push' (Ctrl-P)
+git pull
 
-# -- Build and DockerHub
+# -- Deploy
+git clone https://github.com/pvhoang/eztest.git
+cd eztest
 
-build.bat
+bash run.sh
+
+<!-- docker pull hoang12345/eztest-backend
+docker tag hoang12345/eztest-backend eztest-backend
+docker pull hoang12345/eztest-frontend
+docker tag hoang12345/eztest-frontend eztest-frontend
+docker pull hoang12345/eztest-nginx
+docker tag hoang12345/eztest-nginx eztest-nginx -->
+
+docker-compose up --no-build -d
+docker exec eztest_backend_1 php artisan migrate --seed
+
+Public IPv4 address:  54.206.63.91
+
+frontend: `54.206.63.91:4200`
+backend: `54.206.63.91:8000`
+phpmyadmin: `54.206.63.91:7000`
+
+
+exit
+D:\dev\aws\eztest>
