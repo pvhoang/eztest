@@ -19,7 +19,7 @@ icacls.exe ezec2-2.pem /inheritance:r -->
 ssh -i "ezec2-2.pem" ec2-user@ec2-54-206-63-91.ap-southeast-2.compute.amazonaws.com
 [ec2-user@ip-172-31-3-81 ~]$
 ls eztest
-<!-- git pull -->
+git pull
 bash run.sh view
 bash run.sh download
 
