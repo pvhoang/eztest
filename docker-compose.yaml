@@ -60,24 +60,3 @@ services:
     links:
       - mysql:mysql
 
-  composer:
-    build:
-      context: composer
-      dockerfile: ../dockerfiles/composer.dockerfile
-    volumes: 
-      - ./backend:/var/www/html
-
-  artisan:
-    build:
-      context: backend
-      dockerfile: ../dockerfiles/backend.dockerfile
-    volumes: 
-      - ./backend:/var/www/html
-    entrypoint: ["php", "/var/www/html/artisan"]
-
-  npm:
-    image: node:14
-    working_dir: /var/www/html
-    entrypoint: ["npm"]
-    volumes: 
-      - ./backend:/var/www/html
