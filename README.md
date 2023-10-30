@@ -9,6 +9,9 @@ run upload frontend
 run upload nginx -->
 // validate upload in https://hub.docker.com/ hoang12345/phan12345
 
+# 2 - Update GitHub
+. Open 'GitHub Desktop' -> Add 'Summary', 'Description' -> Menu 'Repository' -> 'Push' (Ctrl-P)
+
 # 3 - Work with EC2
 icacls.exe ezec2-2.pem /reset
 icacls.exe ezec2-2.pem /grant:r "hoang:(r)"
@@ -16,9 +19,6 @@ icacls.exe ezec2-2.pem /inheritance:r
 ssh -i "ezec2-2.pem" ec2-user@ec2-54-206-63-91.ap-southeast-2.compute.amazonaws.com
 [ec2-user@ip-172-31-3-81 ~]$
 docker ps
-
-# 1 - Update GitHub
-. Open 'GitHub Desktop' -> Add 'Summary', 'Description' -> Menu 'Repository' -> 'Push' (Ctrl-P)
 git pull
 
 # -- Deploy

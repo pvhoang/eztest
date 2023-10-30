@@ -28,6 +28,18 @@ case $1 in
         docker images
         ;;
 
+    download)
+        echo .
+        echo Download images from DockerHub
+        echo .
+            docker pull hoang12345/eztest-backend
+            docker tag hoang12345/eztest-backend eztest-backend
+            docker pull hoang12345/eztest-frontend
+            docker tag hoang12345/eztest-frontend eztest-frontend
+            docker pull hoang12345/eztest-nginx
+            docker tag hoang12345/eztest-nginx eztest-nginx
+        ;;
+
     *)
         echo don\'t know
     ;;
