@@ -13,19 +13,20 @@ run upload nginx -->
 . Open 'GitHub Desktop' -> Add 'Summary', 'Description' -> Menu 'Repository' -> 'Push' (Ctrl-P)
 
 # 3 - Work with EC2
-icacls.exe ezec2-2.pem /reset
+<!-- icacls.exe ezec2-2.pem /reset
 icacls.exe ezec2-2.pem /grant:r "hoang:(r)"
-icacls.exe ezec2-2.pem /inheritance:r
+icacls.exe ezec2-2.pem /inheritance:r -->
 ssh -i "ezec2-2.pem" ec2-user@ec2-54-206-63-91.ap-southeast-2.compute.amazonaws.com
 [ec2-user@ip-172-31-3-81 ~]$
-docker ps
-git pull
+ls eztest
+<!-- git pull -->
+bash run.sh view
+bash run.sh download
 
 # -- Deploy
 git clone https://github.com/pvhoang/eztest.git
 cd eztest
-
-bash run.sh
+bash run.sh exec
 
 <!-- docker pull hoang12345/eztest-backend
 docker tag hoang12345/eztest-backend eztest-backend
@@ -43,6 +44,12 @@ frontend: `54.206.63.91:4200`
 backend: `54.206.63.91:8000`
 phpmyadmin: `54.206.63.91:7000`
 
-
+# -- Debug
+// https://www.baeldung.com/ops/docker-container-filesystem
+docker exec -it eztest_backend_1 /bin/sh
+/var/www/html $
+ls
+docker exec -it eztest_backend_1 composer install --no-interaction
+composer install --no-interaction
 exit
 D:\dev\aws\eztest>
