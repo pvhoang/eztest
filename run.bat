@@ -66,10 +66,10 @@ goto exit0
 echo.
 echo Log containers
 echo.
-docker logs eztest_nginx-1 
-docker logs eztest_frontend-1
-docker logs eztest_backend-1
-docker logs eztest_mysql-1
+docker logs eztest_nginx_1 
+docker logs eztest_frontend_1
+docker logs eztest_backend_1
+docker logs eztest_mysql_1
 goto exit0
 
 @REM --- build ---
