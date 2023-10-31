@@ -28,7 +28,7 @@ case $1 in
         docker images
         ;;
 
-    download)
+    download-all)
         echo .
         echo Download images from DockerHub
         echo .
@@ -40,6 +40,29 @@ case $1 in
             docker tag hoang12345/eztest_nginx eztest_nginx
         ;;
 
+    download-backend)
+        echo .
+        echo Download backend from DockerHub
+        echo .
+            docker pull hoang12345/eztest_backend
+            docker tag hoang12345/eztest_backend eztest_backend
+        ;;
+
+    download-frontend)
+        echo .
+        echo Download frontend from DockerHub
+        echo .
+            docker pull hoang12345/eztest_frontend
+            docker tag hoang12345/eztest_frontend eztest_frontend
+        ;;
+
+    download-nginx)
+        echo .
+        echo Download nginx from DockerHub
+        echo .
+            docker pull hoang12345/eztest_nginx
+            docker tag hoang12345/eztest_nginx eztest_nginx
+        ;;
     *)
         echo don\'t know
     ;;

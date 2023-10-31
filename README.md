@@ -32,6 +32,8 @@ cd eztest/backend
 composer install --ignore-platform-reqs
 
 # --- DEPLOY AWS EC2 - see EZLEAGUE README ---
+[D:\dev\aws\eztest]
+run upload backend
 ssh -i "eztest.pem" ec2-user@ec2-13-211-60-220.ap-southeast-2.compute.amazonaws.com
 [ec2-user@ip-172-31-3-81 ~]$
 cd eztest
@@ -41,6 +43,7 @@ bash run.sh start
 docker exec eztest_backend_1 php artisan migrate --seed
 
 Public IPv4 address: 13.211.60.220
+NOCORS Chrome
 frontend: `13.211.60.220:4200`
-backend: `13.211.60.220:8000`
-phpmyadmin: `13.211.60.220:7000`
+<!-- backend: `13.211.60.220:8000` -->
+<!-- phpmyadmin: `13.211.60.220:7000` -->
