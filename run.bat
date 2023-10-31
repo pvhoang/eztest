@@ -6,7 +6,7 @@ if "%1%"=="prune" goto prune
 if "%1%"=="build" goto build
 if "%1%"=="upload" goto upload
 if "%1%"=="deploy" goto deploy
-if "%1%"=="exec" goto exec
+if "%1%"=="start" goto start
 if "%1%"=="stop" goto stop
 
 echo.
@@ -18,15 +18,15 @@ echo - prune: prune all containers and images
 echo - build - all/backend/nginx/frontend: build images
 echo - upload - all/backend/nginx/frontend: upload images to DockerHub
 echo - deploy - backend/frontend: rebuild image and deploy
-echo - exec: exec with available images
+echo - start: start containers
 echo - stop: stop containers
 echo.
 goto exit0
 
-@REM --- exec ---
-:exec
+@REM --- start ---
+:start
 echo.
-echo Exec container with available images
+echo Start containers
 echo.
 docker-compose down
 docker-compose up --no-build -d nginx backend frontend mysql phpmyadmin
@@ -35,7 +35,7 @@ goto exit0
 @REM --- stop ---
 :stop
 echo.
-echo Stop container
+echo Stop containers
 echo.
 docker-compose down
 goto exit0
@@ -66,10 +66,10 @@ goto exit0
 echo.
 echo Log containers
 echo.
-docker logs eztest-nginx-1 
-docker logs eztest-frontend-1
-docker logs eztest-backend-1
-docker logs eztest-mysql-1
+docker logs eztest_nginx-1 
+docker logs eztest_frontend-1
+docker logs eztest_backend-1
+docker logs eztest_mysql-1
 goto exit0
 
 @REM --- build ---
@@ -93,19 +93,19 @@ docker-compose build backend nginx frontend
 goto exit0
 :bbackend
 echo.
-echo Build image: eztest-backend
+echo Build image: eztest_backend
 echo.
 docker-compose build backend
 goto exit0
 :bnginx
 echo.
-echo Build image: eztest-nginx
+echo Build image: eztest_nginx
 echo.
 docker-compose build nginx
 goto exit0
 :bfrontend
 echo.
-echo Build image: eztest-frontend
+echo Build image: eztest_frontend
 echo.
 docker-compose build frontend
 goto exit0
@@ -128,38 +128,38 @@ echo.
 echo Upload all images
 echo.
 docker login
-docker tag eztest-backend hoang12345/eztest-backend
-docker push hoang12345/eztest-backend
+docker tag eztest_backend hoang12345/eztest_backend
+docker push hoang12345/eztest_backend
 pause
-docker tag eztest-nginx hoang12345/eztest-nginx
-docker push hoang12345/eztest-nginx
+docker tag eztest_nginx hoang12345/eztest_nginx
+docker push hoang12345/eztest_nginx
 pause
-docker tag eztest-frontend hoang12345/eztest-frontend
-docker push hoang12345/eztest-frontend
+docker tag eztest_frontend hoang12345/eztest_frontend
+docker push hoang12345/eztest_frontend
 goto exit0
 :uBackend
 echo.
-echo Upload eztest-backend
+echo Upload eztest_backend
 echo.
 docker login
-docker tag eztest-backend hoang12345/eztest-backend
-docker push hoang12345/eztest-backend
+docker tag eztest_backend hoang12345/eztest_backend
+docker push hoang12345/eztest_backend
 goto exit0
 :uNginx
 echo.
-echo Upload eztest-nginx
+echo Upload eztest_nginx
 echo.
 docker login
-docker tag eztest-nginx hoang12345/eztest-nginx
-docker push hoang12345/eztest-nginx
+docker tag eztest_nginx hoang12345/eztest_nginx
+docker push hoang12345/eztest_nginx
 goto exit0
 :uFrontend
 echo.
-echo Upload eztest-frontend
+echo Upload eztest_frontend
 echo.
 docker login
-docker tag eztest-frontend hoang12345/eztest-frontend
-docker push hoang12345/eztest-frontend
+docker tag eztest_frontend hoang12345/eztest_frontend
+docker push hoang12345/eztest_frontend
 goto exit0
 
 @REM --- deploy ---
@@ -177,7 +177,7 @@ goto exit0
 
 :rdBackend
 echo.
-echo Redeploy eztest-backend
+echo Redeploy eztest_backend
 echo.
 @REM docker-compose down backend
 @REM docker-compose up -d --build backend
